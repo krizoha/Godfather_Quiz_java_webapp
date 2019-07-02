@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../static/css/style.css"
+          th:href="${'css/style.css'}"/>
+    <link rel="icon" href="../static/images/favicon.png"
+          th:href="${'images/favicon.png'}"/>
+    <title>Index</title>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <h1>Godfather quotes</h1>
+
+        <form method="post">
+
+            <!--/*@thymesVar id="statements" type="java.lang.Class"*/-->
+            <div th:each="oneStatement : ${statements}" class="item">
+
+                <!--/*@thymesVar id="id" type="java.lang.Class"*/-->
+                <!--/*@thymesVar id="id" type="java.lang.Class"*/-->
+
+
+                <h2 th:href="${oneStatement.id}"></h2>
+                <h4 th:text="${oneStatement.quote}"></h4>
+
+                <div class="radiobuttons">
+                    <label>
+
+                        <input type="radio"
+                               name="answers[0]"
+                               th:name="'answers[' + ${oneStatement.id} + ']'"
+                               value = "TRUE"
+                               th:value="${T(cz.java_webapp.godfather_quotes.Statement.TypeOfStatement).TRUE_STATEMENT}"/>
+                        TRUE
+                    </label>
+
+
+                    <label>
+                        <input type="radio"
+                               name="answers[0]"
+                               th:name="'answers[' + ${oneStatement.id} + ']'"
+                               value = "FALSE"
+                               th:value="${T(cz.java_webapp.godfather_quotes.Statement.TypeOfStatement).FALSE_STATEMENT}"/>
+                        FALSE
+                    </label>
+                </div>
+
+            </div>
+
+            <input type="submit" value="Result"/>
+
+        </form>
+
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../static/css/style.css"
+          th:href="${'css/style.css'}"/>
+    <link rel="icon" href="../static/images/favicon.png"
+          th:href="${'images/favicon.png'}"/>
+    <title>correct_answer</title>
+</head>
+
+<body>
+
+    <h1>Correct answers</h1>
+
+    <div th:each="oneStatement : ${statements}" class="item">
+        <h4 th:text="${oneStatement.quote}"></h4>
+        <h3 th:if="${oneStatement.type == T(cz.java_webapp.godfather_quotes.Statement.TypeOfStatement).TRUE_STATEMENT}">It is Don Corleone's quote.</h3>
+        <h3 th:unless="${oneStatement.type == T(cz.java_webapp.godfather_quotes.Statement.TypeOfStatement).TRUE_STATEMENT}">Don Corleone did not say it.</h3>
+    </div>
+
+</body>
+</html>
